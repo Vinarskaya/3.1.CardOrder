@@ -26,6 +26,7 @@ class HappyPathTest {
         options.addArguments("--no-sandbox");
         options.addArguments("--headless");
         driver = new ChromeDriver(options);
+        driver.get("http://localhost:9999");
     }
 
     @AfterEach
@@ -36,7 +37,6 @@ class HappyPathTest {
     @Test
     // проверка позитивного сценария
     public void shouldShowSuccessMessage() {
-        driver.get("http://localhost:9999");
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Винарская Татьяна");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79999999999");
         driver.findElement(By.cssSelector("[data-test-id=agreement]")).click();
@@ -51,7 +51,6 @@ class HappyPathTest {
     @Test
     // проверка позитивного сценария при двойной фамилии
     public void shouldShowSuccessMessageIfDoubleSurname() {
-        driver.get("http://localhost:9999");
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Винарская-Винарская Татьяна");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79999999999");
         driver.findElement(By.cssSelector("[data-test-id=agreement]")).click();
